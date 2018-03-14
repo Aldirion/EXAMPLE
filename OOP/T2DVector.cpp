@@ -95,7 +95,7 @@ A:
 		T2DVectorAnalizer obj;
 		//		time(&t);
 		//		cout << "Time: "   << "Action: initializating of array\n\n";
-		//		fout << "\nTime: "   << "Action: initializating of array\n\n";
+				fout << "\nTime: "<<time()   << "Действие: Инициализация массива\n\n";
 
 	B:
 		system("cls");
@@ -131,6 +131,10 @@ A:
 			system("pause");
 			break;
 		}
+		case -1:
+		{
+			goto A;
+		}
 		default:
 		{
 			cout << "Что-то пошло не так ;( Попробуйте ещё раз.\n";
@@ -149,8 +153,8 @@ A:
 		{
 			system("cls");
 			int err = 0;
-			cout << "\nTime: " << "Действие: Сортировка массива\n\n";
-			fout << "\nTime: " << "Действие: Сортировка массива\n\n";
+			cout << "\nTime: " <<time() << "Действие: Сортировка массива\n\n";
+			fout << "\nTime: " <<time() << "Действие: Сортировка массива\n\n";
 			err = obj.Sort(Arr, n);
 			if (err == 1)
 			{
@@ -208,16 +212,13 @@ A:
 		case 4:
 		{
 			system("cls");
-			cout << "Одну секунду.\n";
-			Sleep(1000);
 			goto A;
 			break;
 		}
 		case -1:
 		{
 			system("cls");
-			cout << "Одну секунду";
-			Sleep(1000);
+			goto B;
 			break;
 		}
 		default:
@@ -245,8 +246,6 @@ A:
 		case 'y':
 		case 'Y':
 		{
-			cout << "Одну секунду";
-			Sleep(1000);
 			fout.close();
 			fout.open("log.txt", ios::out);
 			fout.close();
@@ -257,8 +256,6 @@ A:
 		case 'n':
 		case 'N':
 		{
-			cout << "Одну секунду";
-			Sleep(1000);
 			system("cls");
 			goto A;
 			break;
