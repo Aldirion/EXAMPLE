@@ -1,0 +1,7 @@
+hotels 6
+Plasa| New York |5|2|10|0 |15
+Orion| Chickago |3|1|9 |10|15
+Vega | New York |5|2|15|20|15
+Zeus | New York |2|5|0 |9 |15
+Afine| Dallas   |4|2|10|11|15
+Plasa| London   |3|3|8 |0 |15

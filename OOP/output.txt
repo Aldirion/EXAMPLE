@@ -1,0 +1,5 @@
+      date      type      name    count
+  12.01.18      Food    Cheese        12
+  13.01.18   Alcohol      Vine         5
+  12.01.18      Food     Pizza         3
+  13.01.18   Clothes    Jacket         2
