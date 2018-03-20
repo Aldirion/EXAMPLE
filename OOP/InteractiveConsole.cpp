@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "InteractiveConsole.h"
+#include <InteractiveConsole.h>
+#define BUFF_SIZE 100
 
 void set_color(ConsoleColor txt, ConsoleColor background)
 {
@@ -91,6 +92,7 @@ B:
 	case VK_RETURN:
 	{
 		set_color(White, Black);
+		show_cursor(true);
 		return(i + 1);
 	}
 	default:
@@ -101,9 +103,30 @@ B:
 	if (exit_m == false)
 		goto A;
 }
-char * time()
+char * _time()
 {
 	time_t t;
 	time(&t);
-	return ctime(&t);
+	if (!strcmp(setlocale(LC_ALL, NULL), "Russian_Russia.1251"))
+	{
+		char* T = ctime(&t);
+		char* out = new char[255];
+		strcpy(out, "");
+		T = strtok(T, " ");
+		(strcmp(T, "Mon") == 0) ? (strcat(out, "Понедельник")) : (strcmp(T, "Tue") == 0) ? (strcat(out, "Вторник")) : (strcmp(T, "Wed") == 0) ? (strcat(out, "Среда")) : (strcmp(T, "Thu") == 0) ? (strcat(out, "Четверг")) : (strcmp(T, "Fri") == 0) ? (strcat(out, "Пятница")) : (strcmp(T, "Sat") == 0) ? (strcat(out, "Суббота")) : (strcat(out, "Воскресенье"));
+		T = strtok(NULL, " ");
+		strcat(out, " ");
+		(strcmp(T, "Jan") == 0) ? (strcat(out, "Январь")) : (strcmp(T, "Feb") == 0) ? (strcat(out, "Февраль")) : (strcmp(T, "Mar") == 0) ? (strcat(out, "Март")) : (strcmp(T, "Apr") == 0) ? (strcat(out, "Апрель")) : (strcmp(T, "May") == 0) ? (strcat(out, "Май")) : (strcmp(T, "Jun") == 0) ? (strcat(out, "Июнь")) : (strcmp(T, "Jul") == 0) ? (strcat(out, "Июль")) : (strcmp(T, "Aug") == 0) ? (strcat(out, "Август")) : (strcmp(T, "Sep") == 0) ? (strcat(out, "Сентябрь")) : (strcmp(T, "Oct") == 0) ? (strcat(out, "Октябрь")) : (strcat(out, "Декабрь"));
+		T = strtok(NULL, " ");
+		strcat(out, " ");
+		strcat(out, T);
+		T = strtok(NULL, " ");
+		strcat(out, " ");
+		strcat(out, T);
+		T = strtok(NULL, " ");
+		strcat(out, " ");
+		strcat(out, T);
+		return out;
+	}
+	else return ctime(&t);
 }

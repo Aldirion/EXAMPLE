@@ -3,7 +3,6 @@
 #include <math.h>
 #include <conio.h>
 #include <iostream>
-#include <ctime>
 #include <InteractiveConsole.h>
 
 using namespace std;
@@ -59,6 +58,7 @@ S:
 		}
 		}
 		break;
+		
 	}
 	case 2:
 	{

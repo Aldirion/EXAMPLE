@@ -1,13 +1,15 @@
 #include <Windows.h>
 #include <InteractiveConsole.h>
 #include <conio.h>
+#include <iostream>
+#include <string>
 #include "menu.h"
 #include "Struct.h"
 #include "THotel.h"
 #include "T2DVector.h"
 #include "GraphObject.h"
-#include <iostream>
-#include <string>
+#include "Templates.h"
+
 using namespace std;
 
 //#define DOWN 80
@@ -31,92 +33,6 @@ menu::menu()
 
 void menu::m_interface()
 {
-	/*
-	bool exit = false;
-	int i = 0;
-	int action = 0;
-	A:
-	show_cursor(false);
-	set_color(Black, LightGray);
-	cout << Menu[0] << endl;
-	set_color(White, Black);
-	for (int i = 1; i < menu_size; i++)
-	cout << Menu[i] << endl;
-	B:
-	action = _getch();
-	//cout << action << "\t" << VK_RETURN;
-	switch (action)
-	{
-	case DOWN:
-	{
-	if (i < menu_size-1)
-	{
-	show_cursor(false);
-	set_color(White, Black);
-	system("cls");
-	i++;
-	for (int j = 0; j < menu_size; j++)
-	{
-	if (j != i)
-	{
-	set_color(White, Black);
-	cout << Menu[j] << "\n";
-	}
-	else
-	{
-	set_color(Black, LightGray);
-	cout << Menu[j] << "\n";
-	}
-	}
-	}
-	goto B;
-	break;
-	}
-	case UP:
-	{
-	show_cursor(false);
-	if (i > 0)
-	{
-	set_color(White, Black);
-	system("cls");
-
-	--i;
-	for (int j = 0; j < menu_size; j++)
-	{
-	if (j != i)
-	{
-	set_color(White, Black);
-	cout << Menu[j] << endl;
-	}
-	else
-	{
-	set_color(Black, LightGray);
-	cout << Menu[j] << endl;
-	}
-	}
-	}
-	goto B;
-	break;
-	}
-	case VK_ESCAPE:
-	{
-	set_color(White, Black);
-	menu::pre_destructor();
-	exit_m = true;
-	break;
-	}
-	case VK_RETURN:
-	{
-	set_color(White, Black);
-	menu::choose(i+1);
-	}
-	default:
-	{
-	goto B;
-	}
-	}
-	if (exit_m == false)
-	goto A;*/
 	choose(menu_interface(Menu, menu_size));
 }
 
@@ -144,6 +60,7 @@ void menu::choose(int chs)
 		system("cls");
 		THotel start;
 		start.HList_Def();
+		start.~THotel();
 		break;
 	}
 	case 3:
@@ -152,6 +69,7 @@ void menu::choose(int chs)
 		system("cls");
 		T2DVector start;
 		start.menu();
+		start.~T2DVector();
 		break;
 	}
 	case 4:
@@ -161,10 +79,15 @@ void menu::choose(int chs)
 		break;
 	}
 	case 5:
+	{
+		template_start();
+		break;
+	}
 	case 6:
 	{
 		system("cls");
-		cout << "Эта функция пока недоступна. Нажмите UP, чтобы продолжить.\n";
+		cout << "Эта функция пока недоступна\n";
+		Sleep(1000);
 		break;
 	}
 	case -1:

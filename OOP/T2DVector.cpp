@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include <InteractiveConsole.h>
 #include "T2DVector.h"
 #include <math.h>
 #include <iostream>
@@ -6,7 +7,7 @@
 #include <Windows.h>
 #include <fstream>
 #include <string>
-#include <InteractiveConsole.h>
+
 
 
 using namespace std;
@@ -81,7 +82,7 @@ void T2DVector::Set()
 void T2DVector::menu() {
 A:
 	fstream fout("log.txt", ios::app);
-	//	time_t t;
+	//	_time()_t t;
 	system("cls");
 	ShowCursor(true);
 	cout << "Введите количество элементов массива или 0, чтобы вернуться в главное меню, или -1, чтобы начать заново с очисткой лога.:\n\n\n>>> ";
@@ -93,9 +94,9 @@ A:
 		srand(time(NULL));
 		T2DVector *Arr = new T2DVector[n];
 		T2DVectorAnalizer obj;
-		//		time(&t);
-		//		cout << "Time: "   << "Action: initializating of array\n\n";
-				fout << "\nTime: "<<time()   << "Действие: Инициализация массива\n\n";
+		//		_time()(&t);
+		//		cout << "_time(): "   << "Action: initializating of array\n\n";
+				fout << "\n_time(): "<< _time()   << "Действие: Инициализация массива\n\n";
 
 	B:
 		system("cls");
@@ -153,14 +154,14 @@ A:
 		{
 			system("cls");
 			int err = 0;
-			cout << "\nTime: " <<time() << "Действие: Сортировка массива\n\n";
-			fout << "\nTime: " <<time() << "Действие: Сортировка массива\n\n";
+			cout << "\ntime: " << _time() << "Действие: Сортировка массива\n\n";
+			fout << "\ntime: " << _time() << "Действие: Сортировка массива\n\n";
 			err = obj.Sort(Arr, n);
 			if (err == 1)
 			{
 				system("cls");
-				cout << "\nTime: " << "Сортировка произведена, отсортированный массив:\n\n";
-				fout << "\nTime: " << "Сортировка произведена, отсортированный массив:\n\n";
+				cout << "\ntime: " <<_time()<< "Сортировка произведена, отсортированный массив:\n\n";
+				fout << "\ntime: "<<_time() << "Сортировка произведена, отсортированный массив:\n\n";
 				for (int i = 0; i < n; i++)
 				{
 					cout << i + 1 << ". ";
@@ -183,8 +184,8 @@ A:
 		case 2:
 		{
 			system("cls");
-			cout << "\nTime: " << time() << "Действие: Поиск вектора максимальной длины\n\n";
-			fout << "\nTime: " << time() << "Действие: Поиск вектора максимальной длины\n\n";
+			cout << "\ntime: " << _time() << "Действие: Поиск вектора максимальной длины\n\n";
+			fout << "\ntime: " << _time() << "Действие: Поиск вектора максимальной длины\n\n";
 			int ind(0);
 			sorted ? (ind = n - 1) : (ind = obj.SearchMaxLength(Arr, n));
 			cout << ind + 1 << ". Максимальная длина:" << (Arr + ind)->Length() << "\n";
@@ -197,8 +198,8 @@ A:
 		case 3:
 		{
 			system("cls");
-			cout << "\nTime: " << time() << "Действие: Вывести массив\n\n";
-			fout << "\nTime: " << time() << "Действие: Вывести массив\n\n";
+			cout << "\ntime: " << _time() << "Действие: Вывести массив\n\n";
+			fout << "\ntime: " << _time() << "Действие: Вывести массив\n\n";
 			for (int i = 0; i < n; i++)
 			{
 				cout << i + 1 << ". ";

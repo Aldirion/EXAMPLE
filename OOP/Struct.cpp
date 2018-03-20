@@ -24,7 +24,7 @@ A:
 			char * keys = new char[30];
 			system("cls");
 			fin.getline(keys, 30);
-			strtok(keys, " ");
+			keys = strtok(keys, " ");
 			if (!strcmp(keys, KEY))
 			{
 				keys = strtok(NULL, "\n\0");
@@ -110,7 +110,7 @@ void struct_sort(Product *p, int count)
 
 void struct_output(Product *p, int c)
 {
-	fstream fout("output.txt", ios::out);// , o_date("o_date.txt", ios::out), o_type("o_type.txt", ios::out), o_name("o_name.txt", ios::out), o_count("o_count.txt", ios::out);
+	fstream fout("output.txt", ios::out);
 	fout << setw(10) << "date" << setw(10) << "type" << setw(10) << "name" << setw(10) << "count\n";
 	cout << "\n\n\n";
 	for (int i = 0; i < c; i++)
@@ -119,15 +119,6 @@ void struct_output(Product *p, int c)
 		cout << setw(10) << (p + i)->date << setw(10) << (p + i)->type << setw(10) << (p + i)->name << setw(10) << (p + i)->count << "\n";
 		//вывод всей сводки в общий файл
 		fout << setw(10) << (p + i)->date << setw(10) << (p + i)->type << setw(10) << (p + i)->name << setw(10) << (p + i)->count << "\n";
-		//вывод сводки в соответствующие файлы
-		//o_date << i + 1 << ". " << (p + i)->date << "\n";
-		//o_type << i + 1 << ". " << (p + i)->type << "\n";
-		//o_name << i + 1 << ". " << (p + i)->name << "\n";
-		//o_count << i + 1 << ". " << (p + i)->count << "\n";
 	}
 	fout.close();
-	/*o_date.close();
-	o_type.close();
-	o_name.close();
-	o_count.close();*/
 }

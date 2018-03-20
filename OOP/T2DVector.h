@@ -20,7 +20,6 @@ public:
 	T2DVector & operator --();
 	T2DVector operator --(int);
 	friend std::ostream &operator <<(std::ostream &_out, const T2DVector &_p);
-	//friend std::ofstream &operator <<(std::ofstream &_fout, const T2DVector &_p);
 	friend std::istream &operator >>(std::istream &_in, T2DVector &_p);
 	bool operator ==(const T2DVector &_p) const
 	{
